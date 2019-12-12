@@ -31,7 +31,9 @@ class AutoComplete
     }
     this.textbox.addEventListener("input", function(e)
     {
-      if (e.data == null) return;
+      console.log(e);
+      
+      if (e.data == null || !this.instance.enabled) return;
       /**
        * @type {string}
        */
@@ -45,8 +47,38 @@ class AutoComplete
         this.value = text+rest;
         this.setSelectionRange(ss, this.value.length);
       }
-    })
+    });
+
+    this.textbox.addEventListener("keydown", function(e) {
+      if (this.instance.tabFill && e.keyCode == 9) {
+        var ss = this.selectionStart;
+        var se = this.selectionEnd;
+        if (se == this.value.length && ss < this.value.length) {
+          e.preventDefault();
+          this.value = this.value += " ";
+          this.setSelectionRange(this.value.length, this.value.length);
+        }
+      }
+      else {
+        return;
+      }
+    });
   }
+
+  /**
+   * The current state of activation. If ``true``, autocompletion will happen
+   */
+  enabled = true;
+
+  /**
+   * If the autocompletion should be case sensitive.
+   */
+  caseSensitive = false;
+
+  /**
+   * When ``Tab`` is press and an autocompletion is present, should it fill instead of tab stopping?
+   */
+  tabFill = true;
 
   /**
    * List of words and sentences available for autocompletions.
@@ -77,7 +109,13 @@ class AutoComplete
     }
     for (let i = 0; i < this.completions.length; i++) {
       const word = this.completions[i];
-      if (word.toLowerCase().startsWith(input.toLowerCase())) {
+      var _word = word;
+      var _input = input;
+      if (!this.caseSensitive) {
+        _word = _word.toLowerCase();
+        _input = _input.toLowerCase();
+      }
+      if (_word.startsWith(_input)) {
         rest = word.substring(input.length);
         break;
       }

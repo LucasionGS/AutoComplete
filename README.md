@@ -35,14 +35,57 @@ new AutoComplete(inputElement, completions = []);
 ```
 
 ## Array of completions
-`AutoComplete` instances has an array variable called `completions`. You can add and remove autocompletion strings dynamically by editing this.
+`AutoComplete` instances has an array variable called `completions`. You can add and remove autocompletion strings dynamically by editing this.  
+**Default: `[]`**
 ```js
 /**
   * List of words and sentences available for autocompletions.
   * This list is automatically sorted by shortest to longest string when executed.
   * @type {string[]}
   */
-  completions = [];
+completions = [];
+```
+
+## Enabled/Disabled
+You can disabled autocompletion temporarily until re-enabled by modifying the `enabled` variable.  
+**Default: `true`**
+```js
+/**
+  * The current state of activation. If ``true``, autocompletion will happen
+  */
+enabled = true;
+```
+
+## Case Sensitivity
+You can toggle case sensitivity by modifying the `caseSensitive` variable.  
+**Default: `false`**
+```js
+/**
+  * If the autocompletion should be case sensitive.
+  */
+caseSensitive = false;
+```
+
+## Tab Fill
+You can toggle between if the `Tab` button fills the autocompletion or not by editing the `tabFill` variable.  
+**Default: `true`**
+```js
+/**
+  * When ``Tab`` is press and an autocompletion is present, should it fill instead of tab stopping?
+  */
+tabFill = true;
+```
+
+## Word Separator
+`AutoComplete` instances also carry a `separateBy` variable.  
+By default this is `space` but can be set to any string. `Space` is the most logical thing to separate words by and therefore recommend to keep default.
+
+**Default: `" "`**
+```js
+/**
+  * The character to separate words by (Space by default)
+  */
+separateBy = " ";
 ```
 
 ## Known supported element types
