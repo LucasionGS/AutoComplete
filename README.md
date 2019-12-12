@@ -1,6 +1,19 @@
 # AutoComplete
 This is a standard JavaScript (as well as Node requiriable) class that adds super easy auto completion to your input elements.
 
+## Implementation
+### Standard Webpage JavaScript
+If you are using this for a website and standard JavaScript in general, just add it to your ``header`` tag as any other script:
+```html
+<header>
+  <script src="autocomplete.js"></script>
+</header>
+```
+### Node.js module
+If you are using Node.js with Electron or something else that supports using a browser with Node.js, you can also add it as a module instead:
+```js
+const {AutoComplete} = require("autocomplete.js");
+```
 
 ## Getting started
 Adding autocompletion is as easy as 1 line of code to get started.
