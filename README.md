@@ -6,7 +6,7 @@ This is a standard JavaScript (as well as Node requiriable) class that adds supe
 Adding autocompletion is as easy as 1 line of code to get started.
 ```js
 const instance = new AutoComplete(document.querySelector("YourInput"), ["Autocompletes"]);
-// Or can also be done using the AutoComplete.add() function
+// Or it can also be done using the static AutoComplete.add() function
 const instance = AutoComplete.add(document.querySelector("YourInput"), ["Autocompletes"]);
 ```
 
@@ -21,5 +21,15 @@ Using `AutoComplete.add()` is completely identical to using `new Autocomplete()`
 new AutoComplete(inputElement, completions = []);
 ```
 
-## Completions
-`AutoComplete` instances have a variable called `completions`. You can add and remove autocompletion strings dynamically by editing this.
+## Array of completions
+`AutoComplete` instances has an array variable called `completions`. You can add and remove autocompletion strings dynamically by editing this.
+```js
+/**
+  * List of words and sentences available for autocompletions.
+  * This list is automatically sorted by shortest to longest string when executed.
+  * @type {string[]}
+  */
+  completions = [];
+```
+
+Go ahead and try it in action, it's super simple.

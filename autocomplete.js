@@ -51,6 +51,7 @@ class AutoComplete
   /**
    * List of words and sentences available for autocompletions.
    * This list is automatically sorted by shortest to longest string when executed.
+   * @type {string[]}
    */
   completions = [];
 
