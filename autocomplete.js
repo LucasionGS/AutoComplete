@@ -76,6 +76,11 @@ class AutoComplete
   caseSensitive = false;
 
   /**
+   * If the autocompletion should check only the full text (Set to `true`) or check first the full text, then with one less word from the start, then one less, etc..
+   */
+  onlyFullText = false;
+
+  /**
    * When ``Tab`` is press and an autocompletion is present, should it fill instead of tab stopping?
    */
   tabFill = true;
@@ -120,7 +125,7 @@ class AutoComplete
         break;
       }
     }
-    if (input.split(this.separateBy).length > 1 && rest == "") {
+    if (!this.onlyFullText && input.split(this.separateBy).length > 1 && rest == "") {
       var nInput = input.split(this.separateBy);
       nInput.shift();
       input = nInput.join(this.separateBy);
