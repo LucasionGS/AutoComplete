@@ -3,12 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script async src="autocomplete.js"></script>
+  <script src="autocomplete.js"></script>
   <title>Auto complete JS</title>
 </head>
 <body>
   <div>
-    <input type="text" id="textbox">
+    <textarea type="text" id="textbox"></textarea>
+    <script>
+      new AutoComplete(document.querySelector("#textbox"),
+        [
+          "these",
+          "are",
+          "all",
+          "words",
+          "this",
+          "textarea",
+          "can",
+          "autocomplete",
+          "to",
+          "And it even works with full sentences!",
+        ]
+      );
+    </script>
   </div>
 </body>
 </html>

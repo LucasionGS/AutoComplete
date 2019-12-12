@@ -45,4 +45,10 @@ new AutoComplete(inputElement, completions = []);
   completions = [];
 ```
 
+## Known supported element types
+```html
+<input>
+<textarea></textarea> <!-- Multiline supported! -->
+```
+
 Go ahead and try it in action, it's super simple.

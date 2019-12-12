@@ -41,7 +41,7 @@ class AutoComplete
 
       // if (text.substring(text.length-1,text.length) == " ") return;
       if (ss == text.length) {
-        var rest = this.instance.run(text);
+        var rest = this.instance.run(text.split("\n").pop());
         this.value = text+rest;
         this.setSelectionRange(ss, this.value.length);
       }
