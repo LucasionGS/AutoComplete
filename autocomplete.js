@@ -30,9 +30,7 @@ class AutoComplete
       this.completions = completions;
     }
     this.textbox.addEventListener("input", function(e)
-    {
-      console.log(e);
-      
+    {      
       if (e.data == null || !this.instance.enabled) return;
       /**
        * @type {string}
