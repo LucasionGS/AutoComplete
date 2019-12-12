@@ -29,7 +29,7 @@ class AutoComplete
     if (completions.length > 0) {
       this.completions = completions;
     }
-    this.textbox.addEventListener("input", function(e)
+    this.textbox.addEventListener("input", function(/** @type {InputEvent}*/e)
     {      
       if (e.data == null || !this.instance.enabled) return;
       /**
@@ -46,7 +46,6 @@ class AutoComplete
         this.setSelectionRange(ss, this.value.length);
       }
     });
-
     this.textbox.addEventListener("keydown", function(e) {
       if (this.instance.tabFill && e.keyCode == 9) {
         var ss = this.selectionStart;
@@ -55,10 +54,26 @@ class AutoComplete
           e.preventDefault();
           this.value = this.value += " ";
           this.setSelectionRange(this.value.length, this.value.length);
+          
+          ss = this.selectionStart;
+          var rest = this.instance.run(this.value.split("\n").pop());
+          this.value = this.value+rest;
+          this.setSelectionRange(ss, this.value.length);
         }
       }
-      else {
-        return;
+      if (e.keyCode == 39) {
+        var ss = this.selectionStart;
+        var se = this.selectionEnd;
+        if (se == this.value.length) {
+          this.setSelectionRange(this.value.length, this.value.length);
+          ss = this.selectionStart;
+          se = this.selectionEnd;
+          setTimeout(() => {
+            var rest = this.instance.run(this.value.split("\n").pop(), true);
+            this.value = this.value+rest;
+            this.setSelectionRange(ss, this.value.length);
+          }, 0);
+        }
       }
     });
   }
@@ -98,9 +113,10 @@ class AutoComplete
   /**
    * Run the autocompletion and return what is remaining to write.
    * @param {string} input The text to check if matches any autocomplete strings.
+   * @param {boolean} excludeIdentical If it should exclude results that is identical to the input. (Default: ``false``)
    * @returns {string}
    */
-  run(input)
+  run(input, excludeIdentical = false)
   {
     this.completions.sort((a, b) => {
       return a.length - b.length;
@@ -118,7 +134,7 @@ class AutoComplete
         _word = _word.toLowerCase();
         _input = _input.toLowerCase();
       }
-      if (_word.startsWith(_input)) {
+      if (_word.startsWith(_input) && (!excludeIdentical || _word != _input)) {
         rest = word.substring(input.length);
         break;
       }
@@ -127,7 +143,7 @@ class AutoComplete
       var nInput = input.split(this.separateBy);
       nInput.shift();
       input = nInput.join(this.separateBy);
-      return this.run(input);
+      return this.run(input, excludeIdentical);
     }
     return rest;
   }
