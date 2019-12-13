@@ -1,5 +1,5 @@
 {
-  "name": "ion-autocomplete",
+  "name": "ion-ezautocomplete",
   "version": "1.0.0",
   "description": "This is a standard JavaScript (as well as Node requiriable) class that adds super easy auto completion to your input elements.",
   "main": "autocomplete.js",
