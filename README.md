@@ -9,7 +9,7 @@ This is a standard JavaScript (as well as Node requiriable) class that adds supe
 If you are using this for a website and standard JavaScript in general, just add it to your ``header`` tag as any other script:
 ```html
 <header>
-  <script src="ion-ezautocomplete.js"></script>
+  <script src="autocomplete.js"></script>
 </header>
 ```
 ### Node.js module
