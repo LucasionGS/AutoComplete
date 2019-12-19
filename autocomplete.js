@@ -79,50 +79,58 @@ class AutoComplete
   }
 
   /**
-   * The current state of activation. If ``true``, autocompletion will happen
+   * The current state of activation. If ``true``, autocompletion will happen. (Default: ``true``)
    */
   enabled = true;
 
   /**
-   * If the autocompletion should be case sensitive.
+   * If the autocompletion should be case sensitive. (Default: ``false``)
    */
   caseSensitive = false;
 
   /**
-   * If the autocompletion should check only the full text (Set to `true`) or check first the full text, then with one less word from the start, then one less, etc..
+   * If the autocompletion should check only the full text (Set to `true`) or check first the full text, then with one less word from the start, then one less, etc.. (Default: ``false``)
    */
   onlyFullText = false;
 
   /**
-   * When ``Tab`` is press and an autocompletion is present, should it fill instead of tab stopping?
+   * When ``Tab`` is press and an autocompletion is present, should it fill instead of tab stopping? (Default: ``true``)
    */
   tabFill = true;
 
   /**
+   * The minimum about of characters in a string or word to begin suggesting autocompletions. (Default: ``1``)
+   */
+  minChars = 1;
+
+  /**
    * List of words and sentences available for autocompletions.
-   * This list is automatically sorted by shortest to longest string when executed.
+   * This list is automatically sorted by shortest to longest string when executed. (Default: ``[ ]``)
    * @type {string[]}
    */
   completions = [];
 
   /**
-   * The character to separate words by (Space by default)
+   * The character to separate words by (Default: ``" "``)
    */
   separateBy = " ";
 
   /**
    * Run the autocompletion and return what is remaining to write.
    * @param {string} input The text to check if matches any autocomplete strings.
-   * @param {boolean} excludeIdentical If it should exclude results that is identical to the input. (Default: ``false``)
+   * @param {boolean} excludeIdentical If it should exclude autocompletions that is identical to the input. (Default: ``false``)
    * @returns {string}
    */
   run(input, excludeIdentical = false)
   {
+    var rest = "";
+    if (input.length < this.minChars) {
+      return rest;
+    }
     this.completions.sort((a, b) => {
       return a.length - b.length;
     });
 
-    var rest = "";
     if (input == "") {
       return rest;
     }

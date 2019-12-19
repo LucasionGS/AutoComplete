@@ -1,8 +1,10 @@
+<!-- 
+  This is just a testing file that displays the autocomplete in action.
+
+ -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="autocomplete.js"></script>
   <title>Auto complete JS</title>
 </head>
@@ -10,7 +12,7 @@
   <div>
     <textarea type="text" id="textbox"></textarea>
     <script>
-      var txt = new AutoComplete(document.querySelector("#textbox"),
+      var txt = new AutoComplete(document.getElementById("textbox"),
         [
         "connect",
         "ls",
@@ -28,12 +30,17 @@
         "http",
         "https",
         "http://",
+        "http://google",
+        "http://google.com/",
+        "http://google.com/",
         "https://",
         "https://google",
         "https://google.com/",
         "https://google.com/"
         ]
       );
+
+      txt.minChars = 1;
 
       txt.onlyFullText = true;
     </script>
