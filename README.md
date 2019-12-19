@@ -1,6 +1,9 @@
 # AutoComplete
 This is a standard JavaScript (as well as Node requiriable) class that adds super easy auto completion to your input elements.
 
+[npm](https://www.npmjs.com/package/ion-ezautocomplete)  
+[Github](https://github.com/LucasionGS/AutoComplete)
+
 ## Implementation
 ### Standard Webpage JavaScript
 If you are using this for a website and standard JavaScript in general, just add it to your ``header`` tag as any other script:
