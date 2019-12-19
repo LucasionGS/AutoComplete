@@ -1,6 +1,6 @@
 {
   "name": "ion-ezautocomplete",
-  "version": "1.0.04",
+  "version": "1.0.5",
   "description": "This is a standard JavaScript (as well as Node requiriable) class that adds super easy auto completion to your input elements.",
   "main": "autocomplete.js",
   "repository": {
@@ -8,7 +8,9 @@
     "url": "git+https://github.com/LucasionGS/AutoComplete.git"
   },
   "keywords": [
-    "AutoComplete"
+    "AutoComplete",
+    "Standard",
+    "Customizable Completions"
   ],
   "author": "Lucasion",
   "license": "ISC",
